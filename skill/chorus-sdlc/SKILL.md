@@ -172,9 +172,16 @@ The orchestrator verifies the gate corpus **before** seated lenses author findin
 3. Every **DEFERRED** capability has a complete row in the spec's deferral checklist
    (`chorus-core/DEFERRAL-CHECKLIST.md`)
 4. **Cooper** is seated when any deferral row is cross-user / reuse (no ABSTAIN)
+5. **F-UV (user-value strip)** — when a deferral table or DEFERRED FR is present,
+   the gate corpus or ledger MUST include an F-UV finding from **Cooper** (preferred)
+   or an equivalent author entry with: named outcome, v1 outcome after deferrals,
+   dimensions table (Full/Partial/None), estimated value ratio, and threshold
+   comparison (`agents/alan-cooper-advisor.md` template). Missing F-UV is
+   🟠-potential (delivery theater) until filled.
 
 Missing (1)–(3) is gating 🔴-potential for Goldratt (FR-before-verdict) and may
-block incorporation until the spec is corrected via `/speckit-clarify`.
+block incorporation until the spec is corrected via `/speckit-clarify`. Missing (5)
+is 🟠-potential until Cooper (or ledger author) files the strip.
 
 ### Gate B design checks (value-first)
 

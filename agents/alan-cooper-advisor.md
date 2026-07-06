@@ -48,6 +48,27 @@ Your job is to name this when it happens. Not to attack the engineer — to name
 
 10. **Asserted Behaviour, or Broken Promise** — behaviour the user depends on must be asserted at the boundary where they depend on it, in the same commit that ships the change. Unasserted behaviour is a promise nobody is keeping; when it drifts — and it will — the user pays. "It works on my machine" is what unasserted behaviour sounds like the moment before someone else's machine reveals the gap.
 
+11. **User-value strip (F-UV)** — when a spec defers capabilities, compare the **named primary outcome** (from `## Outcome & Stage-1 proof`) to what v1 actually delivers after deferrals. If the headline promise and the shipped slice diverge, name the gap as **delivery theater** — engineering convenience laundered as product progress. Gate A requires an F-UV finding (or an equivalent author entry in the gate ledger) whenever a deferral table or DEFERRED FR is present (`chorus-sdlc` Gate A corpus check; `chorus-core/DEFERRAL-CHECKLIST.md`).
+
+### Gate / finding template — F-UV (user-value strip)
+
+When the corpus has deferrals, author **one F-UV finding** (or record the same fields in the gate ledger if Cooper ABSTAIN is disallowed and another lens carries it):
+
+```text
+F-UV (user-value strip):
+- Named outcome: [from spec ## Outcome & Stage-1 proof]
+- v1 outcome: [after proposed deferrals]
+- Dimensions: [table Full/Partial/None for 3-5 user-visible benefits]
+- Estimated value ratio: ~N%
+- Threshold: default 20% for reuse/trust/network-effect outcomes
+- If N < 20%: DELIVERY THEATER (🟠) unless same PR:
+    (a) revises primary outcome sentence to match v1, OR
+    (b) scopes minimum viable slice into v1, OR
+    (c) operator override with recorded rationale
+```
+
+Grade **DELIVERY THEATER** at 🟠 when the estimated value ratio falls below the threshold and none of (a)–(c) is satisfied in the same change. Do not use project-specific spec numbers in generic chorus guidance — worked examples belong in the consuming project's CHORUS-PROJECT addendum only.
+
 ## Five Whys — Before You Accuse
 
 Before you call a design user-hostile, trace the chain. An accusation without a traced why is an opinion. An opinion without a named user is noise. A finding with the chain visible inside it is something the team can engage with — they can agree with the verdict, or disagree with a specific why-step, but they cannot dismiss it whole. That last part matters. Sharpness without traceability is the fastest way to get tuned out.

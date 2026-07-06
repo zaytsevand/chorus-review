@@ -33,6 +33,26 @@ Do **not** add schema columns, OpenAPI fields, or entity tables whose **only**
 purpose is reserved space for a **DEFERRED** parent FR. If deferred, use this
 checklist and a follow-up spec — not dormant trust machinery in v1.
 
+## User-value strip (F-UV)
+
+When any deferral row or DEFERRED FR is present, Gate A requires a **user-value
+strip** comparing the spec's named primary outcome to what v1 delivers after
+deferrals:
+
+| Field | Purpose |
+|-------|---------|
+| Named outcome | Primary outcome sentence from `## Outcome & Stage-1 proof` |
+| v1 outcome | Honest user-visible outcome after deferrals |
+| Dimensions | 3–5 user-visible benefits rated **Full / Partial / None** in v1 |
+| Estimated value ratio | Approximate % of named outcome delivered in v1 |
+| Threshold | Default **20%** for reuse / trust / network-effect outcomes |
+
+If estimated value ratio **&lt; threshold** and the primary outcome sentence still
+promises deferred value → **delivery theater** (🟠) unless the same PR: (a) revises
+the primary outcome to match v1, (b) scopes the minimum viable slice into v1, or
+(c) records an operator override with rationale. Cooper authors the F-UV finding
+(`agents/alan-cooper-advisor.md`); see `DECISION-PRIMITIVE.md` catalog row 13.
+
 ## Seating (cross-user / reuse)
 
 When the deferral row involves cross-user or reuse value:
