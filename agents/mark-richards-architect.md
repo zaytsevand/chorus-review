@@ -101,6 +101,10 @@ fitness function on offer:
   the change is the cheapest possible fitness function — it converts a
   one-shot architectural decision into something the CI gate can defend on
   every future commit. Don't recommend solutions that ship without one.
+- **Trust columns need behavioural tests.** `trust_status`, promotion counters,
+  or cross-user reuse fields in `data-model.md` without a non-deferred parent FR
+  **and** without tests that prove the trust boundary behaviour are schema theater
+  — flag at Gate B (`chorus-core/CONSTITUTION-PREVIEW.md`).
 
 Projects with stronger or domain-specific rules (e.g. "models live only in
 module X," "the client talks to the server only via /api/v1/") layer those

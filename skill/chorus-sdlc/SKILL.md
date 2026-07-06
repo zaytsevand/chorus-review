@@ -155,9 +155,41 @@ operator only for 🔴.
   (`chorus-core/CONDUCTOR.md` § Side-notes) — flag-only, never an auto-seat.
 
 Expected (not enforced) attendance: **Gate A** — product, architecture,
-delivery-and-ops, security, + Goldratt (scope/defer); **Gates B/C** —
+delivery-and-ops, security, + Goldratt (scope/defer); **Cooper mandatory** when
+the corpus defers cross-user value, shared reuse, or trust promotion
+(`chorus-core/DEFERRAL-CHECKLIST.md`, project addendum §12). **Gates B/C** —
 architecture, domain, language lens (if code in scope), delivery-and-ops,
 security.
+
+### Gate A corpus checks (value-first — before Author stage)
+
+The orchestrator verifies the gate corpus **before** seated lenses author findings:
+
+1. **Outcome & Stage-1 proof** present in `spec.md` (not placeholder)
+2. **plan.md** includes **Principle XI side-effect inventory** when the spec names
+   queue polling, GET queue endpoints, or scheduler/fill jobs
+   (`chorus-core/CONSTITUTION-PREVIEW.md`)
+3. Every **DEFERRED** capability has a complete row in the spec's deferral checklist
+   (`chorus-core/DEFERRAL-CHECKLIST.md`)
+4. **Cooper** is seated when any deferral row is cross-user / reuse (no ABSTAIN)
+
+Missing (1)–(3) is gating 🔴-potential for Goldratt (FR-before-verdict) and may
+block incorporation until the spec is corrected via `/speckit-clarify`.
+
+### Gate B design checks (value-first)
+
+- Trust / promotion / cross-user fields in `data-model.md` or OpenAPI require a
+  **non-deferred** parent FR that consumes them; otherwise 🔴 anti-theater
+- Queue/poll designs must match the plan XI inventory (no undeclared GET writes)
+
+### Incorporation rules (deferral checklist)
+
+When incorporation resolves a deferral or anti-theater finding:
+
+1. Revise **`spec.md` first** — add or complete deferral-checklist rows (S5)
+2. Regenerate `plan.md` / `data-model.md` via `/speckit-plan` — remove dormant trust
+   columns if parent FR stays DEFERRED
+3. Re-seat **Cooper** on cross-user/reuse deferrals before re-running Gate A
 
 ### Exploratory phase (per gate)
 

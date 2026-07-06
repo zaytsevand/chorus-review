@@ -151,6 +151,7 @@ rows 5/8/11 declare no auto-default; every 🟡 row names an override — gates 
 | 9 | Phase 0 scope/exclusion — addendum present | 🟢 | addendum file exists | deterministic |
 | 10 | Phase 0 scope/exclusion — addendum absent | 🟡 | no addendum | infer defaults + async confirm |
 | 11 | Final feature sign-off / 🔴 waiver | 🔴 | always | high-stakes — **no auto-default** |
+| 12 | Reuse / cross-user deferral sign-off | 🔴 | corpus defers cross-user value, shared reuse, or trust promotion **without** a complete deferral-checklist row (all columns incl. beneficiary) **or** without Cooper seated at Gate A | high-stakes — **no auto-default**; operator confirms beneficiary + falsifiable instrument |
 
 ## Invariants (D1–D5)
 
