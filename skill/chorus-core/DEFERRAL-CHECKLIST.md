@@ -1,8 +1,8 @@
 # Deferral checklist (chorus-core)
 
 Canonical checklist for **trust / reuse deferrals** in specs and Gate A corpora.
-LinkedInTools mirrors this in `.specify/templates/spec-template.md` and
-`docs/reviews/CHORUS-PROJECT.md` §11.
+Consuming projects mirror this in their spec-template and project CHORUS-PROJECT
+addendum (e.g. `.specify/templates/spec-template.md` and `docs/reviews/CHORUS-PROJECT.md`).
 
 ## When required
 
@@ -18,13 +18,13 @@ Gate A **blocks** incorporation when a DEFERRED item lacks a complete row.
 
 | Column | Question it answers |
 |--------|---------------------|
-| **ID** | Stable id (`D-001`, `FR-050`, …) |
+| **ID** | Stable id (`D-001`, `FR-NNN`, …) |
 | **Deferred capability** | What is explicitly not built in v1 |
 | **Distinct actors** | Who is in scope vs out (per-user vs cross-user) |
 | **Completeness predicate** | What must already ship for the deferral to be honest |
 | **Trust boundary** | Where enforcement lives (server vs edge; isolation vs shared) |
 | **Falsifiable un-defer instrument** | Metric/event that proves un-defer is earned — not operator judgment alone |
-| **Follow-up spec** | Where deferred scope is preserved (`spec 131`, BACKLOG, …) |
+| **Follow-up spec** | Where deferred scope is preserved (follow-up spec NNN, BACKLOG, …) |
 | **Beneficiary of deferral** | Who benefits from waiting: user, operator, or **build team** |
 
 ## Anti-theater rule
@@ -51,4 +51,4 @@ Gate A incorporation for a deferral finding MUST:
 
 ## Provenance
 
-Value-first spec gate recommendations (2026-07); offsite case study specs 119 / 131.
+Value-first spec gate recommendations (2026-07).
