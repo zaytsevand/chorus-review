@@ -468,12 +468,26 @@ no original report to react with). Each gets:
 1. **Pointer to the matrix** at the artifact path (they `Read` it).
 2. **Their Round 1 findings IDs** explicitly listed (so they don't react to
    their own — S8: the author of a finding is never its grader).
-3. **Five questions through their lens:**
-   - Agreements you'd sharpen (especially blind spots others caught)
-   - Pushbacks (where the matrix mis-frames, in your lens)
-   - Overreach (where another lens spoke outside its authority)
-   - Retract or sharpen anything from your Round 1
-   - Cross-cutting themes the matrix flagged
+3. **Two tasks through their lens:**
+
+   **Task 1 — Triage.** For each finding you did not author, one call: `USABLE`
+   (real and actionable as stated) or `NOT USABLE` (wrong, out of scope, or too
+   vague to act on — give a `file:line` or a one-line reason).
+
+   **Task 2 — Derive (the round's primary output).** *Given what other lenses
+   reported, what does that imply **in your own territory** that you have not yet
+   examined?* Go and look, then report what you find.
+   - A derived finding is new ground **you** examined, not a second opinion on
+     someone else's. "Security found an unauthenticated write path, so I checked
+     whether the same handler leaks the identifier into user-facing copy" is a
+     derive. "I agree with Security" is not.
+   - Cite `file:line` for ground you read this round; the Round-1 evidence rule
+     applies unchanged.
+   - Name the finding you derived from.
+   - Derived findings enter the register with a `D` prefix (`D1`, `D2`, …), carry
+     their own authored severity, and are votable next round like any other.
+
+   Triage is a list. Derive gets the prose.
 4. **Evidence rule continues in Round 2.** Agreements, pushbacks, overreach
    claims, and retractions that make project-specific assertions cite
    `file:line`. "I read X.py:NN and confirm Bob's claim" is a citation.
@@ -482,7 +496,9 @@ no original report to react with). Each gets:
    introduced in Round 2 carry `[principle:proposed]`. The same
    evidence-check gate that ran post-Round-1 runs post-Round-2: unsupported
    project-specific assertions are demoted, not registered as findings.
-5. **End with the three-way call** (one per finding you have a view on): "is this
+5. **End with the three-way call** — for **findings with fewer than three
+   independent Round-1 authors only**; the rest are auto-`CONFIRM`ed at their
+   authored severity. One per such finding you have a view on: "is this
    finding **under-rated** (PRIORITIZE — should escalate), **correctly rated**
    (CONFIRM — you agree at the proposed severity), or **over-rated** (OVER-RATE —
    should demote)?" CONFIRM is agreement, not escalation: use it when you'd rank the
