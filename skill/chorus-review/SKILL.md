@@ -520,6 +520,9 @@ no original report to react with). Each gets:
      their own authored severity, and are votable next round like any other.
 
    Triage is a list. Derive gets the prose.
+
+   *Why the round is shaped this way, and what would falsify it:*
+   `docs/round2-derive-evidence.md`.
 4. **Evidence rule continues in Round 2.** Agreements, pushbacks, overreach
    claims, and retractions that make project-specific assertions cite
    `file:line`. "I read X.py:NN and confirm Bob's claim" is a citation.
