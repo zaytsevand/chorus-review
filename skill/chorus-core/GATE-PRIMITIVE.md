@@ -94,6 +94,11 @@ flowchart TD
   (S9). Abstention on a finding is allowed. The `CONFIRM` value exists so the tally can tell
   "I agree, rank it high" apart from "this is under-rated, escalate" — the ambiguity that
   inflated convergent agreement into gating severity (issue #13; spec `009-confirm-vote-tally`).
+- **Corroboration threshold.** A finding independently reported by **three or
+  more** Stage-2 authors is recorded `CONFIRM` at its authored severity and skips
+  Stage 3. Findings below the threshold are adjudicated normally. The threshold
+  governs *severity adjudication only* — usable / not-usable triage still runs on
+  every finding a persona did not author.
 - **Success criterion**: adversarial and real — each vote traces to a dispatched
   persona, and no finding is voted on by its own author.
 - **Must not**: be predicted, inferred, or summarized by the orchestrator. A
@@ -190,4 +195,7 @@ Designed in `docs/superpowers/specs/2026-06-06-agent-sdlc-workflow-design.md`
 and specified in `specs/003-agent-sdlc-workflow/` (see
 `contracts/gate-primitive.md` and `contracts/sdlc-invariants.md`). The
 stage-separation rule and S8/S9 come from a 2026-06-06 back-test of the
-constraint-and-flow lens.
+constraint-and-flow lens. The Stage-3 corroboration threshold was set from a
+downstream project's measurement over ~50 rounds: findings carrying three or more
+independent authors were never demoted by a vote, so adjudicating them spent a
+stage to reproduce a verdict already reached.

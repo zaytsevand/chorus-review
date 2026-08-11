@@ -1,6 +1,12 @@
 ---
 name: chorus-sdlc
-description: Agent-SDLC lifecycle mode for the chorus suite — interleaves the speckit cycle (plan / tasks / implement) with three scoped chorus gates (design, plan-tasks, implementation), each running the shared four-stage gate primitive. Use when the user says "run the agent-SDLC on feature 0NN". Produces a per-feature ledger at specs/<feature>/agent-sdlc-log.md. REQUIRED composition: chorus-core (shared substrate); independent of chorus-review.
+description: >-
+  Agent-SDLC lifecycle mode for the chorus suite — interleaves the speckit cycle
+  (plan / tasks / implement) with three scoped chorus gates (design,
+  plan-tasks, implementation), each running the shared four-stage gate primitive.
+  Use when the user says "run the agent-SDLC on feature 0NN". Produces a
+  per-feature ledger at specs/<feature>/agent-sdlc-log.md. REQUIRED composition:
+  chorus-core (shared substrate); independent of chorus-review.
 ---
 
 # Chorus SDLC (lifecycle mode)
