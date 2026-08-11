@@ -1,6 +1,14 @@
 ---
 name: chorus-review
-description: Multi-advisor project state review (Evans/Richards/Cooper/Norman/Uncle Bob/Beck/Delivery-and-Ops/security/Goldratt) with per-round RSVP self-selection, cross-evaluation, conflict reconciliation, and ranked recommendations. Use when the user asks for a chorus, a project-state review, or to "spawn the regular chorus." Produces a durable artifact at docs/reviews/YYYY-MM-DD-chorus-review.md. REQUIRED composition: chorus-core (shared substrate). For the agent-SDLC lifecycle mode use the chorus-sdlc skill.
+description: >-
+  Multi-advisor project state review
+  (Evans/Richards/Cooper/Norman/Uncle Bob/Beck/Delivery-and-Ops/security/Goldratt)
+  with per-round RSVP self-selection, cross-evaluation, conflict reconciliation,
+  and ranked recommendations. Use when the user asks for a chorus, a
+  project-state review, or to "spawn the regular chorus." Produces a durable
+  artifact at docs/reviews/YYYY-MM-DD-chorus-review.md. REQUIRED composition:
+  chorus-core (shared substrate). For the agent-SDLC lifecycle mode use the
+  chorus-sdlc skill.
 ---
 
 # Chorus Review — repeatable procedure
@@ -82,6 +90,30 @@ Don't use for:
 - Line-by-line review of a PR diff (use `superpowers:code-reviewer` or
   `/ultrareview` — the chorus reviews specs and design, not diffs)
 - One-off architecture questions (use `mark-richards-architect` solo)
+
+## PR design review (targeted mode)
+
+When the operator invokes **`/chorus-review the PR`** (or names a PR number/URL),
+run a **design review of the PR's approach and seams**, not a line-by-line diff
+review. Line-by-line diff review is a different tool's job; the chorus is here for
+whether the approach and its seams are right.
+
+**Phase 0 adjustments:**
+- **Round context** — PR title/body, branch, files touched (+/−), governing specs
+  (whatever spec the PR cites, or an `Implements:`-style header in the code), linked
+  issues, and CI status. State explicitly: *"Mode: design review of the PR's
+  approach, not a line-by-line diff review."*
+- **Anchor surface** — the PR diff paths + their governing specs/contracts/tests.
+  Chase each `# Implements:` / spec reference to an invariant (constitution
+  principle, OpenAPI contract, or integration test).
+- **Artifact path** — `docs/reviews/YYYY-MM-DD-chorus-review-prNNN.md` (commit it).
+- **Exclusions** — unchanged from the project addendum; Security-and-Trust still
+  overrides on attacker surface.
+
+**Emphasis when the operator asks for coding discipline / architecture / DDD:**
+seat Evans, Richards, Uncle Bob, Beck, and Guido (if Python touched) with briefs
+that weight seam placement, bounded-context honesty, SOLID, TDD evidence, and
+Python idiom — but still run the full RSVP roster unless the operator caps lenses.
 
 ## Project addendum
 
@@ -468,12 +500,26 @@ no original report to react with). Each gets:
 1. **Pointer to the matrix** at the artifact path (they `Read` it).
 2. **Their Round 1 findings IDs** explicitly listed (so they don't react to
    their own — S8: the author of a finding is never its grader).
-3. **Five questions through their lens:**
-   - Agreements you'd sharpen (especially blind spots others caught)
-   - Pushbacks (where the matrix mis-frames, in your lens)
-   - Overreach (where another lens spoke outside its authority)
-   - Retract or sharpen anything from your Round 1
-   - Cross-cutting themes the matrix flagged
+3. **Two tasks through their lens:**
+
+   **Task 1 — Triage.** For each finding you did not author, one call: `USABLE`
+   (real and actionable as stated) or `NOT USABLE` (wrong, out of scope, or too
+   vague to act on — give a `file:line` or a one-line reason).
+
+   **Task 2 — Derive (the round's primary output).** *Given what other lenses
+   reported, what does that imply **in your own territory** that you have not yet
+   examined?* Go and look, then report what you find.
+   - A derived finding is new ground **you** examined, not a second opinion on
+     someone else's. "Security found an unauthenticated write path, so I checked
+     whether the same handler leaks the identifier into user-facing copy" is a
+     derive. "I agree with Security" is not.
+   - Cite `file:line` for ground you read this round; the Round-1 evidence rule
+     applies unchanged.
+   - Name the finding you derived from.
+   - Derived findings enter the register with a `D` prefix (`D1`, `D2`, …), carry
+     their own authored severity, and are votable next round like any other.
+
+   Triage is a list. Derive gets the prose.
 4. **Evidence rule continues in Round 2.** Agreements, pushbacks, overreach
    claims, and retractions that make project-specific assertions cite
    `file:line`. "I read X.py:NN and confirm Bob's claim" is a citation.
@@ -482,11 +528,14 @@ no original report to react with). Each gets:
    introduced in Round 2 carry `[principle:proposed]`. The same
    evidence-check gate that ran post-Round-1 runs post-Round-2: unsupported
    project-specific assertions are demoted, not registered as findings.
-5. **End with the three-way call** (one per finding you have a view on): "is this
-   finding **under-rated** (PRIORITIZE — should escalate), **correctly rated**
-   (CONFIRM — you agree at the proposed severity), or **over-rated** (OVER-RATE —
-   should demote)?" CONFIRM is agreement, not escalation: use it when you'd rank the
-   fix highly but the author's severity is right. Only PRIORITIZE moves a finding up
+5. **End with the three-way call** — for **findings with fewer than three
+   independent Round-1 authors only**; the rest are auto-`CONFIRM`ed at their
+   authored severity. One per such finding you have a view on: "is this finding
+   **under-rated** (PRIORITIZE — should escalate),
+   **correctly rated** (CONFIRM — you agree at the proposed severity), or
+   **over-rated** (OVER-RATE — should demote)?" CONFIRM is agreement, not escalation:
+   use it when you'd rank the fix highly but the author's severity is right. Only
+   PRIORITIZE moves a finding up
    (`chorus-core/GATE-PRIMITIVE.md` stage 3; spec `009-confirm-vote-tally`).
 6. **Convergence note (per agreement)** — "For any finding you converge with,
    mark **one short sentence in your own words** as your agreement note (same

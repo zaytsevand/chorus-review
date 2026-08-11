@@ -390,6 +390,20 @@ the `CHORUS-PROJECT.md` "Project understanding" section (the authoritative
 base). A project declares **targets** and **policy** for the flow in its
 `CHORUS-PROJECT.md` findings→memory section (template carries it).
 
+### Territory provenance — enforced behavioral obligation (deny-default)
+
+Persisted memory is the only channel by which one round's reading reaches a
+later round's independent discovery, so lens boundaries are enforced at the
+write, not during the round. A persona writing to `<persona>/`:
+
+- **MAY** persist conclusions about **its own territory**, including conclusions
+  it reached by deriving from another lens's finding.
+- **MAY** persist a **pointer** that a cross-lens implication exists (finding id
+  and locator), as an index entry.
+- **MUST NOT** persist another lens's finding as its own knowledge.
+
+Deny-default: if provenance is unclear, do not write. Reading is unrestricted.
+
 ### Secret pre-filter — enforced behavioral obligation (FR-010a, deny-default)
 
 The write surface above carries verbatim pull-quotes to durable storage. The

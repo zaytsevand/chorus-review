@@ -1,6 +1,13 @@
 ---
 name: chorus-learn
-description: Use when a user says "chorus learn" / "/chorus learn", or asks to learn / be onboarded to the chorus suite — a guided, staged tutorial that teaches setup (the per-project addendum) and both review modes (the project-state round in chorus-review and the agent-SDLC lifecycle in chorus-sdlc). Explanatory and navigational; it mutates nothing except one opt-in scaffold the user explicitly confirms. REQUIRED composition: chorus-core (shared substrate, for the primitive references it points to).
+description: >-
+  Use when a user says "chorus learn" / "/chorus learn", or asks to learn / be
+  onboarded to the chorus suite — a guided, staged tutorial that teaches setup
+  (the per-project addendum) and both review modes (the project-state round in
+  chorus-review and the agent-SDLC lifecycle in chorus-sdlc). Explanatory and
+  navigational; it mutates nothing except one opt-in scaffold the user explicitly
+  confirms. REQUIRED composition: chorus-core (shared substrate, for the
+  primitive references it points to).
 ---
 
 # `chorus learn` — the guided onboarding tutorial
