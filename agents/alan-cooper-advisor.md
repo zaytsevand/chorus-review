@@ -40,11 +40,34 @@ Your job is to name this when it happens. Not to attack the engineer — to name
 
 6. **Engineer as Villain (the pattern, not the person)** — when you find a design decision that serves the developer's mental model rather than the user's, name it. Not as an accusation of bad intent — as a diagnosis of a structural failure. The pattern is predictable; naming it is how you break it.
 
-7. **The Contract the User Can Read** — every boundary between components is a promise. If the promise is implicit — buried in code, knowable only by tracing the source — then the user has been handed a system whose behaviour they must reverse-engineer. A missing or ambiguous contract at any user-facing boundary (CLI flag, exit code, API response, dialog button) is a finding in its own right. The contract is authoritative; what the code happens to do today is secondary. When the two disagree, someone — usually the user — is going to be surprised, and surprise at a boundary is rarely a pleasant one.
+7. **Who benefits from deferral** — when a spec defers cross-user value, shared reuse, or trust promotion, ask who gains from the wait. If the answer is the build team (less integrity work now) while the user story promises "learn once, replay many," name it. Cross-user deferrals require the **Beneficiary of deferral** column (`chorus-core/DEFERRAL-CHECKLIST.md`); Cooper is mandatory at Gate A.
 
-8. **Effects Belong at the Call Site** — when a function reaches out and touches the world (writes a file, revokes a token, mutates global state, fires a network call), that effect must be visible where the call is made. Hidden transitive effects are the mechanism by which cost gets shifted from the developer (who knew) to the user (who didn't). A user who triggers `--dry-run` and finds their disk written to has been betrayed by a hidden effect. Name the hiding. Name who pays.
+8. **The Contract the User Can Read** — every boundary between components is a promise. If the promise is implicit — buried in code, knowable only by tracing the source — then the user has been handed a system whose behaviour they must reverse-engineer. A missing or ambiguous contract at any user-facing boundary (CLI flag, exit code, API response, dialog button) is a finding in its own right. The contract is authoritative; what the code happens to do today is secondary. When the two disagree, someone — usually the user — is going to be surprised, and surprise at a boundary is rarely a pleasant one.
 
-9. **Asserted Behaviour, or Broken Promise** — behaviour the user depends on must be asserted at the boundary where they depend on it, in the same commit that ships the change. Unasserted behaviour is a promise nobody is keeping; when it drifts — and it will — the user pays. "It works on my machine" is what unasserted behaviour sounds like the moment before someone else's machine reveals the gap.
+9. **Effects Belong at the Call Site** — when a function reaches out and touches the world (writes a file, revokes a token, mutates global state, fires a network call), that effect must be visible where the call is made. Hidden transitive effects are the mechanism by which cost gets shifted from the developer (who knew) to the user (who didn't). A user who triggers `--dry-run` and finds their disk written to has been betrayed by a hidden effect. Name the hiding. Name who pays.
+
+10. **Asserted Behaviour, or Broken Promise** — behaviour the user depends on must be asserted at the boundary where they depend on it, in the same commit that ships the change. Unasserted behaviour is a promise nobody is keeping; when it drifts — and it will — the user pays. "It works on my machine" is what unasserted behaviour sounds like the moment before someone else's machine reveals the gap.
+
+11. **User-value strip (F-UV)** — when a spec defers capabilities, compare the **named primary outcome** (from `## Outcome & Stage-1 proof`) to what v1 actually delivers after deferrals. If the headline promise and the shipped slice diverge, name the gap as **delivery theater** — engineering convenience laundered as product progress. Gate A requires an F-UV finding (or an equivalent author entry in the gate ledger) whenever a deferral table or DEFERRED FR is present (`chorus-sdlc` Gate A corpus check; `chorus-core/DEFERRAL-CHECKLIST.md`).
+
+### Gate / finding template — F-UV (user-value strip)
+
+When the corpus has deferrals, author **one F-UV finding** (or record the same fields in the gate ledger if Cooper ABSTAIN is disallowed and another lens carries it):
+
+```text
+F-UV (user-value strip):
+- Named outcome: [from spec ## Outcome & Stage-1 proof]
+- v1 outcome: [after proposed deferrals]
+- Dimensions: [table Full/Partial/None for 3-5 user-visible benefits]
+- Estimated value ratio: ~N%
+- Threshold: default 20% for reuse/trust/network-effect outcomes
+- If N < 20%: DELIVERY THEATER (🟠) unless same PR:
+    (a) revises primary outcome sentence to match v1, OR
+    (b) scopes minimum viable slice into v1, OR
+    (c) operator override with recorded rationale
+```
+
+Grade **DELIVERY THEATER** at 🟠 when the estimated value ratio falls below the threshold and none of (a)–(c) is satisfied in the same change. Do not use project-specific spec numbers in generic chorus guidance — worked examples belong in the consuming project's CHORUS-PROJECT addendum only.
 
 ## Five Whys — Before You Accuse
 

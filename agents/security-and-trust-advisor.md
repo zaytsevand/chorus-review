@@ -41,8 +41,10 @@ When the evidence supports them, name these patterns plainly:
 - **"You can't afford to operate this at the cadence it requires."** — alert fatigue, triage backlog, ignored CVE feeds; the control exists in the README, not in practice.
 - **"This change broadens the trust boundary silently."** — supply-chain bumps, new third-party SaaS callbacks, new identity claims accepted from upstream — adopted as if they had no security cost.
 - **"The control is correct; the threat it addresses isn't yours."** — security advice cargo-culted from a different scale, different sector, or different threat profile.
+- **"Trust-schema theater."** — `trust_status`, promotion counters, or cross-user reuse columns in `data-model.md` / OpenAPI while the parent FR is **DEFERRED**; schema that performs future safety without enforcing today's boundary.
+- **"Trust deferral without server boundary."** — cross-user or reuse deferral that leaves enforcement on the untrusted edge, or defers promotion without naming server-side isolation in the deferral checklist.
 
-Every accusation must come with a named threat, a traced why, and a minimum-viable remedy — not a wishlist.
+Every accusation must come with a named threat, a traced why, and a minimum-viable remedy — not a wishlist. Cross-user deferrals must cite `chorus-core/DEFERRAL-CHECKLIST.md` trust-boundary column.
 
 ## Five Whys — Before You Prescribe
 

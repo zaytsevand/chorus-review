@@ -151,6 +151,8 @@ rows 5/8/11 declare no auto-default; every 🟡 row names an override — gates 
 | 9 | Phase 0 scope/exclusion — addendum present | 🟢 | addendum file exists | deterministic |
 | 10 | Phase 0 scope/exclusion — addendum absent | 🟡 | no addendum | infer defaults + async confirm |
 | 11 | Final feature sign-off / 🔴 waiver | 🔴 | always | high-stakes — **no auto-default** |
+| 12 | Reuse / cross-user deferral sign-off | 🔴 | corpus defers cross-user value, shared reuse, or trust promotion **without** a complete deferral-checklist row (all columns incl. beneficiary) **or** without Cooper seated at Gate A | high-stakes — **no auto-default**; operator confirms beneficiary + falsifiable instrument |
+| 13 | User-value strip (`user-value-strip`) | 🟡→🟠 | deferral table or DEFERRED FR present **without** F-UV finding (named outcome, v1 outcome, dimensions, ratio vs threshold) **or** estimated value ratio &lt; default threshold (20% for reuse/trust/network-effect) with primary outcome still promising deferred value and no same-PR remedy (a–c in `DEFERRAL-CHECKLIST.md`) | 🟡 while strip missing; 🟠 delivery theater when ratio below threshold — operator may revise outcome, widen v1 slice, or record override |
 
 ## Invariants (D1–D5)
 

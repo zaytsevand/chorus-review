@@ -114,7 +114,10 @@ inferred per-finding):
   cut mandate for the operator (this is the flag-only safety net that *replaces* the
   former hard "scope lens is never out-seated" carve-out; the lens now seats by
   exceptional entry, `chorus-sdlc/SKILL.md` seating, and its absence is surfaced, not
-  forced).
+  forced);
+- a **Gate A corpus defers cross-user or reuse value without Cooper seated** — flag
+  missing product beneficiary review (`alan-cooper-advisor` mandatory on cross-user/reuse
+  deferrals per project addendum and `chorus-core/DEFERRAL-CHECKLIST.md`).
 
 Side-notes are a human-catch layer **beside** the tally, never inside it. Making a
 side-note *do more* — hold or gate an outcome on its strength — is **out of scope
