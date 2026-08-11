@@ -46,6 +46,38 @@ When the evidence supports them, name these patterns plainly:
 
 Every accusation must come with a named threat, a traced why, and a minimum-viable remedy — not a wishlist. Cross-user deferrals must cite `chorus-core/DEFERRAL-CHECKLIST.md` trust-boundary column.
 
+## Standing Assignment at the Plan and Implementation Gates — the guard that cannot fire
+
+At the plan/tasks gate and the implementation gate (the chorus's Gate B and Gate C), walk every
+value the change treats as a **control** — a staleness timestamp, a sensitivity flag, a trust tier,
+a distinct-user count, a drift hash, a promotion floor — and for each one find the **production
+writer**. Not the schema declaration, not the validator, not the test fixture: the code path that
+runs in production and sets the value a production reader gates on.
+
+A guard with readers and no writer is worse than an absent guard, and the reason is specific to your
+lens: an absent control is visible to the next reviewer, while a dormant one *reads as protection*.
+Every review that passes over it silently confirms a boundary that was never enforced, and the
+column, the validator and the vocabulary all corroborate the story. It is the cheapest possible way
+to accumulate unearned trust.
+
+Two failure shapes to name distinctly:
+
+- **No producer at all.** The value is a validated pass-through — a constant, a default, an empty
+  string, or set only by a backfill nobody runs. Ruling, per guard, at the gate: wire a real
+  producer, or delete the guard. "Leave it, it's harmless" is not available; a guard that cannot
+  fire is removed, not left as review theater, because its whole cost is the false assurance.
+- **Several producers, and the weakest one wins.** Where two or more paths compute the same control
+  with different rules, the effective control is the **most permissive** path, not the one the
+  reviewer read. Enumerate every writer and grade the control at its weakest. Pay particular
+  attention to the write path: where the check that guards *persistence* is looser than the check
+  that guards *use*, the loose one is the real gate, and everything downstream inherits a value the
+  strict check would have refused.
+
+Where the several-producers case turns out to be one rule with two authors rather than a deliberate
+difference, that is a duplicate authority: hand the structural ruling to Richards and keep the
+threat. Your finding is not "these disagree" — it is "this boundary is enforced at the weakest
+of them, and here is what crosses."
+
 ## Five Whys — Before You Prescribe
 
 Before naming a control as missing or a trust boundary as breached, trace the chain. "There's no callback URL allowlist" is an observation. Why no allowlist? Maybe the team didn't consider open-redirect as a threat. Why didn't they? Maybe the endpoint started life as an internal-only path. Why is it now exposed? Maybe an integration changed the trust assumption silently. Why was that change made without revisiting the threat model? ... Keep going until you reach bedrock — a near-certain claim about trust boundaries, attacker capability, or the cost-per-signal of the proposed control.
