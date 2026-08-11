@@ -196,6 +196,8 @@ and specified in `specs/003-agent-sdlc-workflow/` (see
 `contracts/gate-primitive.md` and `contracts/sdlc-invariants.md`). The
 stage-separation rule and S8/S9 come from a 2026-06-06 back-test of the
 constraint-and-flow lens. The Stage-3 corroboration threshold was set from a
-downstream project's measurement over ~50 rounds: findings carrying three or more
-independent authors were never demoted by a vote, so adjudicating them spent a
-stage to reproduce a verdict already reached.
+measurement over ~50 rounds and 2,998 findings: findings carrying three or more
+independent authors changed band 0% of the time, so adjudicating them spent a stage
+to reproduce a verdict already reached. The numbers, the instrumentation, and the
+conditions under which this should be reverted are in
+`docs/round2-derive-evidence.md`.
