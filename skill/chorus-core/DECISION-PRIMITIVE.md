@@ -157,7 +157,7 @@ rows 5/8/11 declare no auto-default; every 🟡 row names an override — gates 
 
 ## Invariants (D1–D5)
 
-Bind every decision — both modes. Extend I1–I8 (integration) and S1–S9 (lifecycle/gate).
+Bind every decision — both modes. Extend I1–I8 (integration) and S1–S11 (lifecycle/gate).
 
 - **D1** — band by **declared predicate**, never inference. (Extends I2/S3/S9.)
 - **D2** — **🔴 never auto-proceeds**: hard-block, no default. A severity-🔴 finding is
