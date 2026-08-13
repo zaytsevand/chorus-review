@@ -153,10 +153,11 @@ rows 5/8/11 declare no auto-default; every 🟡 row names an override — gates 
 | 11 | Final feature sign-off / 🔴 waiver | 🔴 | always | high-stakes — **no auto-default** |
 | 12 | Reuse / cross-user deferral sign-off | 🔴 | corpus defers cross-user value, shared reuse, or trust promotion **without** a complete deferral-checklist row (all columns incl. beneficiary) **or** without Cooper seated at Gate A | high-stakes — **no auto-default**; operator confirms beneficiary + falsifiable instrument |
 | 13 | User-value strip (`user-value-strip`) | 🟡→🟠 | deferral table or DEFERRED FR present **without** F-UV finding (named outcome, v1 outcome, dimensions, ratio vs threshold) **or** estimated value ratio &lt; default threshold (20% for reuse/trust/network-effect) with primary outcome still promising deferred value and no same-PR remedy (a–c in `DEFERRAL-CHECKLIST.md`) | 🟡 while strip missing; 🟠 delivery theater when ratio below threshold — operator may revise outcome, widen v1 slice, or record override |
+| 14 | `NEED_INFO` resolution routing | 🟡 | open `NEED_INFO` on a finding (including mandatory `confidence_on_hand: low`); peer path when another seated persona can supply the gap, else operator path | peer reply or operator context is recorded; author revises or confirms; reversible until tally |
 
 ## Invariants (D1–D5)
 
-Bind every decision — both modes. Extend I1–I8 (integration) and S1–S9 (lifecycle/gate).
+Bind every decision — both modes. Extend I1–I8 (integration) and S1–S11 (lifecycle/gate).
 
 - **D1** — band by **declared predicate**, never inference. (Extends I2/S3/S9.)
 - **D2** — **🔴 never auto-proceeds**: hard-block, no default. A severity-🔴 finding is
