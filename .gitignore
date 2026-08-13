@@ -3,3 +3,11 @@
 .vscode/
 *.swp
 .memsearch/
+
+# Local tool state — machine-specific, never part of the canon.
+# Note the deliberate exception: .claude/agent-memory/ IS tracked; it is the
+# personas' durable per-project memory and part of what the suite ships.
+.serena/
+.claude/worktrees/
+.claude/settings.json
+.claude/settings.local.json
