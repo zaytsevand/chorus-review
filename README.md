@@ -43,6 +43,13 @@ it by name and never depend on each other:
   after `implement`). Each gate is RSVP-scoped, capped at five lenses, and blocks
   the pipeline only on an unresolved 🔴. Trigger: **"run the agent-SDLC on
   feature 0NN."** Output: `specs/<feature>/agent-sdlc-log.md`.
+  It also exposes **`chorus challenge`** — Gate A's **premise pass** run
+  standalone, grilling a target's premise (problem / necessity-now / framing /
+  load-bearing assumptions) and steelmanning the null or an alternative, on any
+  spec, design note, or raw idea. Same brief, fixed red-team checklist, and
+  substantive honest-null, defined once in `skill/chorus-sdlc/SKILL.md`
+  (§ Gate A — premise pass); the same pass runs first inside every Gate A.
+  Trigger: **"chorus challenge `<target>`."**
 
 Both modes run the **same** gate primitive from `chorus-core`, so they cannot
 drift. Each sibling declares `REQUIRED: chorus-core` and carries a sibling-side
